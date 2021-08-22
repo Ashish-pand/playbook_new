@@ -1,0 +1,30 @@
+
+---
+- name: Update web servers
+  hosts: n1
+  become: yes
+
+
+  tasks:
+
+  - name: Ensure git is installed
+    yum:
+     name: git
+     state: installed 
+  
+  - name: Ensure food is updated 
+    git:
+     repo: https://github.com/ravi2krishna/ecomm.git
+     dest: /var/www/html
+
+  - name: httpd
+    yum:
+     name: httpd
+     state: installed
+
+
+  - name: httpd enable
+    service:
+     name: httpd
+     state: started
+...

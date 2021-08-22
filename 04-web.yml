@@ -1,6 +1,7 @@
 ---
 - name: Update web servers
-  hosts: web
+  hosts: app
+  become: yes
 
   tasks:
   - name: Ensure web directory is created
@@ -18,4 +19,17 @@
     file:
       path: /home/centos/golu
       state : directory 
+
+
+  - name: ensure httpd is downloaded
+    service: 
+     name: httpd
+     state: started
+
+
+
+  - name: ensure httpd is downloaded
+    service:
+     name: httpd
+     enabled: yes
 ...
