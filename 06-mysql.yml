@@ -1,0 +1,21 @@
+---
+- name: Update web servers
+  hosts: web
+
+  tasks:
+  - name: Ensure web directory is created
+    file:
+     path: /home/centos/web-dir
+     state: directory
+
+ 
+  - name: Ensure app is installed
+    yum:
+     name: java-1.8*
+     state: installed
+   
+  - name: see the directory is created or not
+    file:
+      path: /home/centos/golu
+      state : directory 
+...
